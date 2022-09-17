@@ -1,11 +1,19 @@
 import { diffDates, diffToHtml } from "./datecalc.js";
 import { formatError } from "./utils.js";
-
+import{startTimer,check} from "./timerFunc.js";
+export{dateTimer,dateSoundOfEnded,dateScreen};
 const dateCalcForm = document.getElementById("datecalc");
 const dateCalcResult = document.getElementById("datecalc__result");
 const dateTimer = document.getElementById("timer");
-const d
+const dateSoundOfEnded = document.getElementById('datetime_res');
 dateCalcForm.addEventListener("submit", handleCalcDates);
+const dateScreen = document.getElementById('screen');
+const button = document.getElementById('button');
+const buttonStop = document.getElementById('stop');
+button.addEventListener("click",startTimer);
+
+buttonStop.addEventListener('click',check);
+
 
 function handleCalcDates(event) {
     dateCalcResult.innerHTML = "";
@@ -20,3 +28,6 @@ function handleCalcDates(event) {
     }
     else dateCalcResult.innerHTML = formatError("Для расчета промежутка необходимо заполнить оба поля");
 }
+
+
+    
