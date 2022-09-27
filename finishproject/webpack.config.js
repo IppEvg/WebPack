@@ -1,37 +1,41 @@
 
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const {resolve} = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports ={
-    entry:{
-        main: path.resolve(__dirname, './src/index.js')
-    },
+    entry:     resolve(__dirname, 'src','index.js'),
     output: {
-        main: path.resolve(__dirname, 'dist'),
-        filename: "bungle.js"
+        path: resolve(__dirname, 'dist'),
+        filename: "main.[contenthash].js"
     },
     plugins: [
         new HtmlWebpackPlugin({
             template:resolve(__dirname,'src','index.html')
-        }
-        )
+        })
     ],
     module: {
         rules: [
-            
             {
-                test: /\\.s[ac]ss$/i,
-                use: ['style-loader', 'css-loader', 'sass-loader','scss-loader']
+                test: /\.s[ac]ss$/i,
+                use: ['style-loader', 'css-loader']
             },
             {
-                test: /\\.(png|jpe?g|gif|mp3)$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
-                      loader:  'file-loader'
+                        loader: "img-optimize-loader"
                     }
                 ]
-            }
+            },
+            {
+                test:/\.(mp[3|4])$/i,
+                use:[
+                    {
+                    loader:"file-loader"
+                    }
+                ]
+            }     
         ]
     }
 }
