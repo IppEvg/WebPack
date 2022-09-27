@@ -1,0 +1,43 @@
+
+ .wrappers {
+    width: 1200px;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ .name {
+    display: inline;
+    text-align: center;
+    color: rgb(228, 0, 0);
+    
+}
+ .galler {
+    padding: 1%;
+    display: grid;
+    grid-template-rows:repeat(3, 300px);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1%;
+    background-color: rgba(223, 221, 221, 0.356);
+}
+.gallery-item{
+    box-sizing: border-box;
+    border: 1px solid grey;
+}
+.gallery-item__image{
+    width: 96%;
+    height: 85%;
+    padding: 2%;
+}
+.gallery-item__video{
+object-fit: cover;
+aspect-ratio: 16/9;
+width: 96%;
+    height: 85%;
+}
+
+.gallery-item__title{
+color: rgb(124, 9, 124);
+font-size: 20px;
+padding-left: 15%;
+}
